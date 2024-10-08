@@ -38,7 +38,6 @@ public class PlayerAnimation : MonoBehaviour
 
         float angle = Vector2.SignedAngle(Vector2.up, norDir);
 
-
         return 1;
     }
 }

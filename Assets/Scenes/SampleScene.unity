@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42ce85b9735b58498c15b97d1815b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeed: 10
 --- !u!58 &1596746261
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -414,6 +415,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdafe57bec6795b44a4fe5de17976b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _staticDirection:
+  - Idle SE
+  - Idle SW
+  - Idle NE
+  - Idle NW
 --- !u!212 &1972024788
 SpriteRenderer:
   m_ObjectHideFlags: 0
