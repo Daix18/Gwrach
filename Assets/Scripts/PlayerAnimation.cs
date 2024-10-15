@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    private Animator _anim;
-    public string[] _staticDirection = { "Idle SE", "Idle SW", "Idle NE", "Idle NW" };
+    public readonly string[] _staticDirection = { "Idle N", "Idle NW", "Idle W", "Idle SW", "Idle S", "Idle SE", "Idle E", "Idle NE" };
+    public readonly string[] _runDirection = { "Run N", "Run NW", "Run W", "Run SW", "Run S", "Run SE", "Run E", "Run NE" };
 
+    Animator _anim;
     int lastDirection;
 
     private void Awake()
@@ -24,20 +25,42 @@ public class PlayerAnimation : MonoBehaviour
         }
         else
         {
-            lastDirection = DirectionToIndex(_direction);
+            directionArray = _runDirection;
+            lastDirection = DirectionToIndex(_direction, 8);
         }
-
         _anim.Play(directionArray[lastDirection]);
+        Debug.Log(directionArray[lastDirection]);
     }
 
-    private int DirectionToIndex(Vector2 _direction)
+    private int DirectionToIndex(Vector2 _direction, int _sliceCount)
     {
         Vector2 norDir = _direction.normalized;
 
-        float step = 360 / 8;
+        float step = 360 / _sliceCount;
+
+        float halfstep = step / 2;
 
         float angle = Vector2.SignedAngle(Vector2.up, norDir);
 
-        return 1;
+        angle += halfstep;
+
+        if (angle < 0)
+        {
+            angle += 360;
+        }
+
+        float stepCount = angle / step;
+
+        return Mathf.FloorToInt(stepCount);
+    }
+
+    public static int[] AnimatorStringArrayToHashArray(string[] animationArray)
+    {
+        int[] hashArray = new int[animationArray.Length];
+        for (int i = 0; i < animationArray.Length; i++)
+        {
+            hashArray[i] = Animator.StringToHash(animationArray[i]);
+        }
+        return hashArray;
     }
 }
