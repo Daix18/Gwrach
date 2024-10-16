@@ -49,6 +49,11 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Saltooo");
         }
 
+        if(Input.GetMouseButtonDown(0))
+        {
+            AttackController.THIS.Golpe();
+        }
+
         if (_moveH < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);

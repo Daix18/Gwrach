@@ -76,7 +76,10 @@ public class AttackController : MonoBehaviour
 
         foreach (Collider2D colisionador in objetos)
         {
-           
+            if (colisionador.CompareTag("Enemigo"))
+            {
+                colisionador.transform.GetComponent<EnemyController>().TakeDamage(danoGolpe);
+            }
         }
     }
 
