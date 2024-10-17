@@ -22,21 +22,19 @@ public class EnemySkeleton : Entity
     }
     protected override void Update()
     {
-            
-        Debug.Log(isPlayerDetected.distance);
+        base.Update();
         if (isPlayerDetected)
         {
             if (isPlayerDetected.distance > 2)
             {
                 rb.velocity = new Vector2(movementSpeed *6f * facingDirection, rb.velocity.y);
                 Debug.Log("Veo al Jugador");
-                isAtaquing = false;
                 
             }
             else
             {
                 Debug.Log("Attack" + isPlayerDetected);
-                isAtaquing=true;
+                
             }
         }
         if (!isGrounded || isWallDetected )
