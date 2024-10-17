@@ -41,8 +41,8 @@ public class EnemySkeleton : Entity
             Flip();
 
         movement();
-        
 
+        Debug.Log(isPlayerDetected.collider.name);
            
     }
     private void movement()
@@ -60,7 +60,9 @@ public class EnemySkeleton : Entity
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + playerCheckDistance * facingDirection, wallCheck.position.y));
+
+        Vector3 rayStart = new Vector3(transform.position.x, transform.position.y); // Y-offset in gizmo
+
+        Debug.DrawRay(rayStart, Vector2.right * playerCheckDistance * facingDirection, Color.blue);
     }
 }
