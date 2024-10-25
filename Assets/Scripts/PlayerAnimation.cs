@@ -5,22 +5,15 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    public static PlayerAnimation THIS;
-
     public readonly string[] _staticDirection = { "Idle N", "Idle NW", "Idle W", "Idle SW", "Idle S", "Idle SE", "Idle E", "Idle NE" };
     public readonly string[] _runDirection = { "Run N", "Run NW", "Run W", "Run SW", "Run S", "Run SE", "Run E", "Run NE" };
 
-    [HideInInspector] public  Animator _anim;
+    Animator _anim;
     int lastDirection;
 
     private void Awake()
     {
         _anim = GetComponent<Animator>();
-
-        if (THIS == null)
-        {
-            THIS = this;
-        }
     }
 
     public void SetDirection(Vector2 _direction)
@@ -70,12 +63,4 @@ public class PlayerAnimation : MonoBehaviour
         }
         return hashArray;
     }
-
-
-    //Funciones para llamar como animation events
-    public void FinalizarGolpe()
-    {
-        AttackController.THIS.attacking = false;
-        AttackController.THIS.canAttack = true;
-    }   
 }

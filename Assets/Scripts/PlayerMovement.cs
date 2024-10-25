@@ -19,11 +19,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        NewMethod();
-    }
-
-    private void NewMethod()
-    {
         _rb = GetComponent<Rigidbody2D>();
         _playerAnimation = GetComponentInChildren<PlayerAnimation>();
     }
