@@ -63,4 +63,11 @@ public class PlayerAnimation : MonoBehaviour
         }
         return hashArray;
     }
+
+    //Funciones para llamar como animation events
+    public void FinalizarGolpe()
+    {
+        AttackController.THIS.attacking = false;
+        AttackController.THIS.canAttack = true;
+    }
 }

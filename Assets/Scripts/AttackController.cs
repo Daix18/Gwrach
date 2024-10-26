@@ -16,14 +16,14 @@ public class AttackController : MonoBehaviour
     [SerializeField] public float tiempoEntreAtaques;
     [SerializeField] public float tiempoSiguienteAtaque;
     private Animator animator;
-    bool attacking;
-    bool canAttack;
+    public bool attacking;
+    public bool canAttack;
 
     private float initialHealth = 100f;
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         health = initialHealth;
     }
 
@@ -76,7 +76,7 @@ public class AttackController : MonoBehaviour
 
         foreach (Collider2D colisionador in objetos)
         {
-            if (colisionador.CompareTag("Enemigo"))
+            if (colisionador.CompareTag("Enemy"))
             {
                 colisionador.transform.GetComponent<EnemyController>().TakeDamage(danoGolpe);
             }
@@ -84,11 +84,6 @@ public class AttackController : MonoBehaviour
     }
 
     // Método llamado desde un evento del Animator al finalizar el golpe
-    public void FinalizarGolpe()
-    {
-        attacking = false;
-        canAttack = true;
-    }
 
     public void ResetHealth()
     {
