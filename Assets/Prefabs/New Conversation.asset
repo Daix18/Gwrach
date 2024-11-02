@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a73a62df7b98114aa06ad536515f86e, type: 3}
   m_Name: New Conversation
   m_EditorClassIdentifier: 
-  allLines: []
+  allLines:
+  - speaker: {fileID: 11400000, guid: 933c5eac85a4242489c938fa5f6eb4a6, type: 2}
+    dialogue: Hola pitucos

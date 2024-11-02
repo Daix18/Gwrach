@@ -9,6 +9,7 @@ public class CheckPlayer : MonoBehaviour
     bool isPlayerNearby = false;
 
     public GameObject dialogueUI;
+    public Conversation convo;
 
     // Update is called once per frame
     void Update()
@@ -19,7 +20,8 @@ public class CheckPlayer : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                dialogueUI.SetActive(true); 
+                dialogueUI.SetActive(true);
+                DialogueManager.StartConversation(convo);
             }
         }
         else
