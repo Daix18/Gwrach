@@ -1,19 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
+    public static PlayerAnimation THIS;
+
     public readonly string[] _staticDirection = { "Idle N", "Idle NW", "Idle W", "Idle SW", "Idle S", "Idle SE", "Idle E", "Idle NE" };
     public readonly string[] _runDirection = { "Run N", "Run NW", "Run W", "Run SW", "Run S", "Run SE", "Run E", "Run NE" };
 
-    Animator _anim;
+    [HideInInspector]public Animator _anim;
     int lastDirection;
 
     private void Awake()
     {
         _anim = GetComponent<Animator>();
+
+        if (THIS == null)
+        {
+            THIS = this;
+        }
     }
 
     public void SetDirection(Vector2 _direction)
@@ -62,6 +70,13 @@ public class PlayerAnimation : MonoBehaviour
             hashArray[i] = Animator.StringToHash(animationArray[i]);
         }
         return hashArray;
+    }
+
+    public void SetLayerWeights(float isometricLayer, float scrollLateralLayer)
+    {
+        // Assuming the Idle layer is Layer 0 and Combat is Layer 1
+        _anim.SetLayerWeight(0, isometricLayer);
+        _anim.SetLayerWeight(1, scrollLateralLayer);
     }
 
     //Funciones para llamar como animation events
