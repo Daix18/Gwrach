@@ -15,6 +15,7 @@ public class AttackController : MonoBehaviour
     [SerializeField] public float danoGolpe;
     [SerializeField] public float tiempoEntreAtaques;
     [SerializeField] public float tiempoSiguienteAtaque;
+    private Animator animator;
     public bool attacking;
     public bool canAttack;
 
@@ -22,6 +23,7 @@ public class AttackController : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         health = initialHealth;
     }
 
@@ -66,7 +68,7 @@ public class AttackController : MonoBehaviour
             {
                 attacking = true;
                 canAttack = false;
-               PlayerAnimation.THIS._anim.SetTrigger("Golpe");
+                animator.SetTrigger("Golpe");
             }
         }
 

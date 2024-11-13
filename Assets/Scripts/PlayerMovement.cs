@@ -40,9 +40,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void InCombat()
     {
-        //Ponemos la layer de animación correcta
-        PlayerAnimation.THIS.SetLayerWeights(isometricLayer: 0f, scrollLateralLayer: 1.0f);
-
         _moveH = Input.GetAxis("Horizontal") * _moveSpeed;
         _rb.velocity = new Vector2(_moveH, _rb.velocity.y);
 
@@ -66,13 +63,10 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
-
     }
 
     public void OutOfCombat()
     {
-        //Ponemos la layer de animación correcta
-        PlayerAnimation.THIS.SetLayerWeights(isometricLayer: 1.0f, scrollLateralLayer: 0f);
 
         _moveH = Input.GetAxis("Horizontal") * _moveSpeed;
         _moveY = Input.GetAxis("Vertical") * _moveSpeed;

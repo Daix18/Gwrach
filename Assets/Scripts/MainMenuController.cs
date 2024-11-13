@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -106,5 +107,10 @@ public class MainMenuController : MonoBehaviour
     public void OnApplicationQuit()
     {
         QuitGame();
+    }
+
+    public void LoadScene(int _sceneId)
+    {
+        SceneManager.LoadScene(_sceneId);
     }
 }
