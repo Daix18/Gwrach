@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement THIS;
+
+    public float _playerSpeed;
     private Rigidbody2D _rb;
     private float _moveH, _moveY;
+    [Header("Player Settings")]
     [SerializeField] private bool _isGrounded;
     [SerializeField] private PlayerState _playerState;
-    [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpForce;
     PlayerAnimation _playerAnimation;
     public enum PlayerState
@@ -21,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _playerAnimation = GetComponentInChildren<PlayerAnimation>();
+
+        if (THIS == null)
+        {
+            THIS = this;
+        }
     }
 
     private void Update()
@@ -40,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void InCombat()
     {
-        _moveH = Input.GetAxis("Horizontal") * _moveSpeed;
+        _moveH = Input.GetAxis("Horizontal") * _playerSpeed;
         _rb.velocity = new Vector2(_moveH, _rb.velocity.y);
 
         if (Input.GetKeyDown(KeyCode.W) && _isGrounded)
@@ -68,12 +76,12 @@ public class PlayerMovement : MonoBehaviour
     public void OutOfCombat()
     {
 
-        _moveH = Input.GetAxis("Horizontal") * _moveSpeed;
-        _moveY = Input.GetAxis("Vertical") * _moveSpeed;
+        _moveH = Input.GetAxis("Horizontal") * _playerSpeed;
+        _moveY = Input.GetAxis("Vertical") * _playerSpeed;
         _rb.velocity = new Vector2(_moveH, _moveY);
         Vector2 _direction = new Vector2(_moveH, _moveY);
         _direction = Vector2.ClampMagnitude(_direction, 1);
-        Vector2 _movement = _direction * _moveSpeed;
+        Vector2 _movement = _direction * _playerSpeed;
         _playerAnimation.SetDirection(_movement);
 
     }
