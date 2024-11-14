@@ -81,7 +81,6 @@ public class PlayerMovement : MonoBehaviour
         _direction = Vector2.ClampMagnitude(_direction, 1);
         Vector2 _movement = _direction * _moveSpeed;
         _playerAnimation.SetDirection(_movement);
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
