@@ -9,12 +9,15 @@ public class AttackController : MonoBehaviour
     [SerializeField] private Transform controladorGolpe;
     //[SerializeField] private Image fillImage;
 
+    [Header("Multiplied floats")]
+    [SerializeField] public float _playerHealth;
+    [SerializeField] public float _playerDamage;
+
     [Header("Attack Settings")]
-    [SerializeField] public float health;
     [SerializeField] private float radioGolpe;
-    [SerializeField] public float danoGolpe;
     [SerializeField] public float tiempoEntreAtaques;
     [SerializeField] public float tiempoSiguienteAtaque;
+    private Animator animator;
     public bool attacking;
     public bool canAttack;
 
@@ -22,7 +25,8 @@ public class AttackController : MonoBehaviour
 
     private void Start()
     {
-        health = initialHealth;
+        animator = GetComponentInChildren<Animator>();
+        _playerHealth = initialHealth;
     }
 
     private void Awake()
@@ -43,18 +47,20 @@ public class AttackController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        _playerHealth -= damage;
         //fillImage.fillAmount = health / 100f;
 
-        if (health <= 0)
+        if (_playerHealth <= 0)
         {
-            health = 0; // Asegurarse de que la vida no sea negativa
+            _playerHealth = 0; // Asegurarse de que la vida no sea negativa
+            GameManager.THIS.OnPlayerDeath();
+            ResetHealth();
         }
     }
 
     public float GetCurrentHealth()
     {
-        return health;
+        return _playerHealth;
     }
 
     public void Golpe()
@@ -66,7 +72,7 @@ public class AttackController : MonoBehaviour
             {
                 attacking = true;
                 canAttack = false;
-               PlayerAnimation.THIS._anim.SetTrigger("Golpe");
+                animator.SetTrigger("Golpe");
             }
         }
 
@@ -76,7 +82,7 @@ public class AttackController : MonoBehaviour
         {
             if (colisionador.CompareTag("Enemy"))
             {
-                colisionador.transform.GetComponent<EnemyController>().TakeDamage(danoGolpe);
+                colisionador.transform.GetComponent<EnemyController>().TakeDamage(_playerDamage);
             }
         }
     }
@@ -85,7 +91,7 @@ public class AttackController : MonoBehaviour
 
     public void ResetHealth()
     {
-        health = initialHealth;
+        _playerHealth = initialHealth;
     }
 
     private void OnDrawGizmos()
