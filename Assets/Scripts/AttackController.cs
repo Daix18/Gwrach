@@ -12,7 +12,6 @@ public class AttackController : MonoBehaviour
     [Header("Multiplied floats")]
     [SerializeField] public float _playerHealth;
     [SerializeField] public float _playerDamage;
-    [SerializeField] public float _playerSpeed;
 
     [Header("Attack Settings")]
     [SerializeField] private float radioGolpe;

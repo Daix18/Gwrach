@@ -50,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _moveH = Input.GetAxis("Horizontal") * _playerSpeed;
         _rb.velocity = new Vector2(_moveH, _rb.velocity.y);
+        PlayerAnimation.THIS._anim.SetLayerWeight(0, 0);
+        PlayerAnimation.THIS._anim.SetLayerWeight(1, 1);
 
         if (Input.GetKeyDown(KeyCode.W) && _isGrounded)
         {
@@ -75,6 +77,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void OutOfCombat()
     {
+        PlayerAnimation.THIS._anim.SetLayerWeight(0, 1);
+        PlayerAnimation.THIS._anim.SetLayerWeight(1, 0);
 
         _moveH = Input.GetAxis("Horizontal") * _playerSpeed;
         _moveY = Input.GetAxis("Vertical") * _playerSpeed;
@@ -83,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
         _direction = Vector2.ClampMagnitude(_direction, 1);
         Vector2 _movement = _direction * _playerSpeed;
         _playerAnimation.SetDirection(_movement);
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
