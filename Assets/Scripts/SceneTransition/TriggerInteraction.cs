@@ -5,6 +5,8 @@ public class TriggerInteraction : MonoBehaviour
     public GameObject Player { get; set; }
     public bool CanInteract { get; set; }
 
+    public GameObject visualCue;
+
     //private float timerInteraction;
     //private float interactionCooldown = 0.2f;
 
@@ -12,6 +14,9 @@ public class TriggerInteraction : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        visualCue = GameObject.FindGameObjectWithTag("VisualCue");
+
+        visualCue.SetActive(false);
         
         CanInteract = false;
     }
@@ -31,6 +36,8 @@ public class TriggerInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        visualCue.SetActive(true);
+
         if (collision.gameObject == Player)
         {
             CanInteract = true;
@@ -40,6 +47,8 @@ public class TriggerInteraction : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         CanInteract = false;
+
+        visualCue.SetActive(false);
     }
 
     public virtual void Interact()

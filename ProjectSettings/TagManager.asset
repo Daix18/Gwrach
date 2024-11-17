@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Enemigo
   - NPC_Pelirroja
+  - VisualCue
   layers:
   - Default
   - TransparentFX

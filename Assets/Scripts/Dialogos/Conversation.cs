@@ -14,4 +14,8 @@ public class Conversation : ScriptableObject
     {
         return allLines.Length-1;
     }
+    public Speaker GetInitiator()
+    {
+        return allLines[0].speaker;
+    }
 }

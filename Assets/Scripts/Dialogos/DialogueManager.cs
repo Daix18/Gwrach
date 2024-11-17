@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -28,6 +29,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+
+    }
+
     public static void StartConversation(Conversation convo)
     {
         instance.anim.SetBool("isOpen", true);
@@ -49,7 +55,16 @@ public class DialogueManager : MonoBehaviour
 
         if (currentIndex > currentConvo.getLenght())
         {
+            Debug.Log("Caca");
             instance.anim.SetBool("isOpen", false);
+
+            Speaker initiator = currentConvo.GetInitiator();
+            if (initiator != null)
+            {
+                MarkConversationAsFinished(initiator);
+                GameManager.THIS._firstNPC = true;
+            }
+
             return;
         }
 
@@ -95,5 +110,17 @@ public class DialogueManager : MonoBehaviour
         dialogue.text = fullText; // Asegura que se muestre el texto completo de la línea actual
         typing = null;
         isComplete = true; // Marca que el texto está completamente mostrado
+    }
+
+    private Dictionary<Speaker, bool> conversationCompletion = new Dictionary<Speaker, bool>();
+
+    public bool HasConversationFinished(Speaker speaker)
+    {
+        return conversationCompletion.TryGetValue(speaker, out bool isFinished) && isFinished;
+    }
+
+    public void MarkConversationAsFinished(Speaker speaker)
+    {
+        conversationCompletion[speaker] = true;
     }
 }

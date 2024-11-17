@@ -51,8 +51,4 @@ public class ControldeDialogos : MonoBehaviour
     {
         anim.SetBool("Cartel", false);
     }
-
-
-
-
 }
