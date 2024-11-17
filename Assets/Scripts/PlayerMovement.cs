@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement THIS;
+
+    public float _playerSpeed;
     private Rigidbody2D _rb;
     private float _moveH, _moveY;
+    [Header("Player Settings")]
     [SerializeField] private bool _isGrounded;
     [SerializeField] private PlayerState _playerState;
-    [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpForce;
     PlayerAnimation _playerAnimation;
     public enum PlayerState
@@ -21,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _playerAnimation = GetComponentInChildren<PlayerAnimation>();
+
+        if (THIS == null)
+        {
+            THIS = this;
+        }
     }
 
     private void Update()
@@ -40,11 +48,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void InCombat()
     {
-        //Ponemos la layer de animación correcta
-        PlayerAnimation.THIS.SetLayerWeights(isometricLayer: 0f, scrollLateralLayer: 1.0f);
-
-        _moveH = Input.GetAxis("Horizontal") * _moveSpeed;
+        _moveH = Input.GetAxis("Horizontal") * _playerSpeed;
         _rb.velocity = new Vector2(_moveH, _rb.velocity.y);
+        PlayerAnimation.THIS._anim.SetLayerWeight(0, 0);
+        PlayerAnimation.THIS._anim.SetLayerWeight(1, 1);
 
         if (Input.GetKeyDown(KeyCode.W) && _isGrounded)
         {
@@ -66,22 +73,20 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
-
     }
 
     public void OutOfCombat()
     {
-        //Ponemos la layer de animación correcta
-        PlayerAnimation.THIS.SetLayerWeights(isometricLayer: 1.0f, scrollLateralLayer: 0f);
+        PlayerAnimation.THIS._anim.SetLayerWeight(0, 1);
+        PlayerAnimation.THIS._anim.SetLayerWeight(1, 0);
 
-        _moveH = Input.GetAxis("Horizontal") * _moveSpeed;
-        _moveY = Input.GetAxis("Vertical") * _moveSpeed;
+        _moveH = Input.GetAxis("Horizontal") * _playerSpeed;
+        _moveY = Input.GetAxis("Vertical") * _playerSpeed;
         _rb.velocity = new Vector2(_moveH, _moveY);
         Vector2 _direction = new Vector2(_moveH, _moveY);
         _direction = Vector2.ClampMagnitude(_direction, 1);
-        Vector2 _movement = _direction * _moveSpeed;
+        Vector2 _movement = _direction * _playerSpeed;
         _playerAnimation.SetDirection(_movement);
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
