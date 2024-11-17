@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Suelo
   - Enemy
+  - Enemigo
+  - NPC_Pelirroja
   layers:
   - Default
   - TransparentFX

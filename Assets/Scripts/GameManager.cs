@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]private float currentHealthMultiplier = 1.0f; 
     [SerializeField]private float currentSpeedMultiplier = 1.0f;
 
+    [Header("Zona0 Booleanos")]
+    public bool _firstNPC;
+    public bool _secondNPC;
+
     // Start is called before the first frame update
     void Start()
     {

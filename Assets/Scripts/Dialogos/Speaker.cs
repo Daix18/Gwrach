@@ -13,5 +13,4 @@ public class Speaker : ScriptableObject
     {
         return speakerSprite;
     }
-
 }

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tilemaps.unity
     guid: eba6b8d7383a588448a5e1b974d0fa4c
+  - enabled: 1
+    path: Assets/Scenes/Zona01.unity
+    guid: 16e935bf850554446b7a808927b52cb1
   m_configObjects: {}
