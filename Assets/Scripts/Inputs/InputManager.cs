@@ -40,13 +40,13 @@ public class InputManager : MonoBehaviour
 
     private void SetUpInputActions()
     {
-        _moveAction = _playerInput.actions["Mover"];
+        //_moveAction = _playerInput.actions["Mover"];
         _menuOpenCloseAction = _playerInput.actions["MenuOpenClose"];
     }
 
     private void UpdateInputs()
     {
-        MoveInput = _moveAction.ReadValue<Vector2>();
+        //MoveInput = _moveAction.ReadValue<Vector2>();
         //JumpJustPressed = _jumpAction.WasPressedThisFrame();
         //JumpBeingHeld = _jumpAction.IsPressed();
         //JumpReleased = _jumpAction.WasReleasedThisFrame();
