@@ -312,7 +312,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NUEVA PARTIDA
+  m_text: New Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 04755202fbb44af4eb5972308b9c151b, type: 2}
   m_sharedMaterial: {fileID: -1840658740449617691, guid: 04755202fbb44af4eb5972308b9c151b, type: 2}
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CARGAR PARTIDA
+  m_text: Load Save
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 04755202fbb44af4eb5972308b9c151b, type: 2}
   m_sharedMaterial: {fileID: -1840658740449617691, guid: 04755202fbb44af4eb5972308b9c151b, type: 2}
@@ -5677,7 +5677,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Salir
+  m_text: exit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 04755202fbb44af4eb5972308b9c151b, type: 2}
   m_sharedMaterial: {fileID: -1840658740449617691, guid: 04755202fbb44af4eb5972308b9c151b, type: 2}
@@ -5811,7 +5811,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ajustes
+  m_text: Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 04755202fbb44af4eb5972308b9c151b, type: 2}
   m_sharedMaterial: {fileID: -1840658740449617691, guid: 04755202fbb44af4eb5972308b9c151b, type: 2}
