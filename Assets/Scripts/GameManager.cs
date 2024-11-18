@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -87,5 +88,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("Upgraded Speed: " + upgradedSpeed);
 
         //_deathCanvas.SetActive(false);
+    }
+    public void LoadScene(int _sceneId)
+    {
+        SceneManager.LoadScene(_sceneId);
     }
 }
