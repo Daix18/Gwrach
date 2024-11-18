@@ -17,8 +17,6 @@ public class FinishPoint : TriggerInteraction
     [Header("This Finish Point")]
     public SpawnPointAt CurrentFinishPointPosition;
 
-    public GameObject _visualCue;
-
     public override void Interact()
     {
         SceneSwapController.SwapScene(_sceneToLoad, spawnPointAt);

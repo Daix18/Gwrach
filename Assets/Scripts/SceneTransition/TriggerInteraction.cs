@@ -14,7 +14,6 @@ public class TriggerInteraction : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        visualCue = GameObject.FindGameObjectWithTag("VisualCue");
 
         visualCue.SetActive(false);
         
