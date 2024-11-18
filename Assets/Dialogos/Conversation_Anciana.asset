@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allLines:
   - speaker: {fileID: 11400000, guid: e797db550c25bf6448f0a2e66995f429, type: 2}
-    dialogue: 
+    dialogue: Hola
