@@ -14,4 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allLines:
   - speaker: {fileID: 11400000, guid: e797db550c25bf6448f0a2e66995f429, type: 2}
-    dialogue: Hola
+    dialogue: "Welcome to Gwrach\xB4s Alpha. We hope you enjoy the experience."
+  - speaker: {fileID: 11400000, guid: e797db550c25bf6448f0a2e66995f429, type: 2}
+    dialogue: Here you can view the exploration mechanics.
+  - speaker: {fileID: 11400000, guid: e797db550c25bf6448f0a2e66995f429, type: 2}
+    dialogue: However, if you want to see a version on the combat, please click on
+      Esc, "Load combat" and Esc once more.
+  - speaker: {fileID: 11400000, guid: e797db550c25bf6448f0a2e66995f429, type: 2}
+    dialogue: You are a witch, with unknown, powerful powers. You have the ability
+      to come back whenever you die.
+  - speaker: {fileID: 11400000, guid: e797db550c25bf6448f0a2e66995f429, type: 2}
+    dialogue: After the ritual we did, something went terribly wrong. Three demons
+      scaped from their realms.
+  - speaker: {fileID: 11400000, guid: e797db550c25bf6448f0a2e66995f429, type: 2}
+    dialogue: Train, get better and fight them until you win or they will kill all
+      the coven.
+  - speaker: {fileID: 11400000, guid: e797db550c25bf6448f0a2e66995f429, type: 2}
+    dialogue: Choose your own path by choosing which ability to train.
+  - speaker: {fileID: 11400000, guid: e797db550c25bf6448f0a2e66995f429, type: 2}
+    dialogue: These very same stakes will show you your progress.
+  - speaker: {fileID: 11400000, guid: e797db550c25bf6448f0a2e66995f429, type: 2}
+    dialogue: Use arrows or WASD to move, in exploration and combat. Attack with
+      a click.
+  - speaker: {fileID: 11400000, guid: e797db550c25bf6448f0a2e66995f429, type: 2}
+    dialogue: Pass dialogues with the space bar but I figure you might know that
+      by now.
+  - speaker: {fileID: 11400000, guid: e797db550c25bf6448f0a2e66995f429, type: 2}
+    dialogue: Either way, I will do my best to guide you though this experience.

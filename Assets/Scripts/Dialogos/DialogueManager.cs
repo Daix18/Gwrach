@@ -16,6 +16,8 @@ public class DialogueManager : MonoBehaviour
     private string fullText; // Variable para almacenar el texto completo de la línea actual
     private bool isComplete = true;
 
+    Speaker initiator;
+
     private void Awake()
     {
         if (instance == null)
@@ -31,7 +33,13 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-
+        if(instance != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                instance.ReadNext();
+            }
+        }
     }
 
     public static void StartConversation(Conversation convo)
@@ -42,6 +50,18 @@ public class DialogueManager : MonoBehaviour
         instance.speakerName.text = "";
         instance.dialogue.text = "";
         instance.navButtonText.text = ">";
+        instance.initiator = convo.GetInitiator();
+        if (instance.initiator != null)
+        {
+            if (!instance.conversationCompletion.ContainsKey(instance.initiator))
+            {
+                instance.conversationCompletion.Add(instance.initiator, false);
+            }
+            else
+            {
+                instance.conversationCompletion[instance.initiator] = false;
+            }
+        }
         instance.ReadNext();
     }
 
@@ -58,7 +78,6 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("Caca");
             instance.anim.SetBool("isOpen", false);
 
-            Speaker initiator = currentConvo.GetInitiator();
             if (initiator != null)
             {
                 MarkConversationAsFinished(initiator);
@@ -80,11 +99,12 @@ public class DialogueManager : MonoBehaviour
         isComplete = false;
 
         currentIndex++;
-        if (currentIndex >= currentConvo.getLenght())
+        if (currentIndex > currentConvo.getLenght())
         {
             navButtonText.text = "X";
         }
     }
+
 
     private IEnumerator TypeText(string text)
     {
@@ -114,9 +134,9 @@ public class DialogueManager : MonoBehaviour
 
     private Dictionary<Speaker, bool> conversationCompletion = new Dictionary<Speaker, bool>();
 
-    public bool HasConversationFinished(Speaker speaker)
+    public static bool HasConversationFinished()
     {
-        return conversationCompletion.TryGetValue(speaker, out bool isFinished) && isFinished;
+        return instance.conversationCompletion.TryGetValue(instance.initiator, out bool isFinished) && isFinished;
     }
 
     public void MarkConversationAsFinished(Speaker speaker)

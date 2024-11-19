@@ -7,6 +7,8 @@ public class CheckPlayer : MonoBehaviour
     [SerializeField] private GameObject visualCue;
 
     bool isPlayerNearby = false;
+    bool inConvo = false;
+    bool convoFinished = false;
 
     public GameObject dialogueUI;
     public Conversation convo;
@@ -16,17 +18,27 @@ public class CheckPlayer : MonoBehaviour
     {
         if (isPlayerNearby)
         {
-            visualCue.SetActive(true);
+            if (!convoFinished)
+            {
+                visualCue.SetActive(true);
+            }
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !inConvo)
             {
                 dialogueUI.SetActive(true);
                 DialogueManager.StartConversation(convo);
+                inConvo = true;
             }
         }
-        else
+        if(!isPlayerNearby || convoFinished)
         {
             visualCue.SetActive(false);
+        }
+        if (DialogueManager.HasConversationFinished())
+        {
+            dialogueUI.SetActive(false);
+            inConvo = false;
+            convoFinished = true;
         }
     }
 
@@ -44,6 +56,7 @@ public class CheckPlayer : MonoBehaviour
         {
             isPlayerNearby = false;
             dialogueUI.SetActive(false); // Ocultar la tienda al salir del área de activación
+            inConvo = false;
         }
     }
 }
