@@ -19,7 +19,10 @@ public class VidaPlayer : MonoBehaviour
     void Update()
     {
         healthBar.InitializeHealthBar(playerHealth, playerMaxHealth);
-        
+        if (playerHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     
 }

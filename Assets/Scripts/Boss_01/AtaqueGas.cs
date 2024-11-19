@@ -9,6 +9,7 @@ public class AtaqueGas : MonoBehaviour
     private VidaPlayer playerPlayer;
     
     public float attackCheckRadius;
+    public Transform checkLocation;
     void Start()
     {
         
@@ -49,7 +50,7 @@ public class AtaqueGas : MonoBehaviour
        
 
         Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(transform.position, attackCheckRadius);
+        Gizmos.DrawWireSphere(checkLocation.position, attackCheckRadius);
 
     }
 }

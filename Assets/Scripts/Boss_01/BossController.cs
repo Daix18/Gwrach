@@ -85,7 +85,10 @@ public class BossController : MonoBehaviour
         {
             UpdateAttackTimers();
         }
-
+        if (bossHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     
 
