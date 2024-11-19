@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 public class BossController : MonoBehaviour
 {
     private Animator anim;
     private Transform player;
     private VidaPlayer playerPlayer;
+
     
     
     [Header("General Settings")]
@@ -85,10 +87,14 @@ public class BossController : MonoBehaviour
         {
             UpdateAttackTimers();
         }
-
+        if (bossHealth <= 0)
+        {
+            Destroy(gameObject);
+            ChangeSceneByIndex(1);
+        }
     }
-    
 
+    public void ChangeSceneByIndex(int sceneIndex) { SceneManager.LoadScene(1); }
     private void WalkTowardsPlayer()
     {
         if (isIdle)
