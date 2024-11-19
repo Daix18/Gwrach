@@ -5,8 +5,9 @@ public class BossController : MonoBehaviour
 {
     private Animator anim;
     private Transform player;
-    private Rayo_Ataque_1 damage;
-
+    private VidaPlayer playerPlayer;
+    
+    
     [Header("General Settings")]
     [SerializeField] private float detectionRange = 6f;
     [SerializeField] private float attackRange = 2f;
@@ -26,7 +27,7 @@ public class BossController : MonoBehaviour
     private bool attackTutorialCompleted = false;
     private bool playerInAttackRange = false;
     private bool isAttacking = false;
-    [SerializeField] private int attack2Damage;
+    public int attack2Damage;
 
     public Transform attackCheck;
     public float attackCheckRadius;
@@ -269,17 +270,24 @@ public class BossController : MonoBehaviour
     public void DamageToPlayer()
     {
         Debug.Log("damage");
+        playerPlayer.playerHealth -= attack2Damage;
     }
     private void attackTrigger()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(attackCheck.position, attackCheckRadius);
         foreach (var hit in colliders)
         {
-            // Comprobar si hit tiene un BossController
-            var boss = hit.GetComponent<BossController>();
-            if (boss != null)
+            // Buscar si el objeto tiene el componente VidaPlayer
+            var player = hit.GetComponent<VidaPlayer>();
+            if (player != null)
             {
-                boss.DamageToPlayer();
+                // Aplicar daño al jugador
+                player.playerHealth -= attack2Damage;
+
+                // Actualizar la barra de vida del jugador si es necesario
+                
+
+                Debug.Log($"Daño infligido al jugador: {attack2Damage}. Vida restante: {player.playerHealth}");
             }
         }
     }
