@@ -12,6 +12,7 @@ public class Player_ST : Entity_ST
     private float dashUsageTimer;
     public float playerSpeed= 12;
     public float jumpForce;
+    public float damage = 15;
 
     [Header("Dash")]
     public float dashSpeed;
@@ -71,7 +72,7 @@ public class Player_ST : Entity_ST
             return;
         }
         dashUsageTimer -= Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.LeftShift)&& dashUsageTimer<0) 
+        if (Input.GetKeyDown(KeyCode.W)&& dashUsageTimer<0) 
         {
             dashUsageTimer = dashCooldown;
             dashDir = Input.GetAxisRaw("Horizontal");
@@ -83,7 +84,4 @@ public class Player_ST : Entity_ST
         }
             
     }
-    
-  
-    
 }

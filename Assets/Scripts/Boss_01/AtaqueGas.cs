@@ -19,10 +19,17 @@ public class AtaqueGas : MonoBehaviour
     {
         
     }
-    public void DamageToPlayer()
+    public void DamageToPlayer(VidaPlayer player)
     {
-        Debug.Log("damage");
-        playerPlayer.playerHealth -= damage;
+        player.playerHealth -= damage;
+
+        Debug.Log($"Daño infligido al jugador: {damage}. Vida restante: {player.playerHealth}");
+
+        if (player.playerHealth <= 0)
+        {
+            player.playerHealth = 0; // Asegurarse de que la vida no sea negativa
+            GameManager.THIS.OnPlayerDeath();
+        }
     }
     private void attackTrigger()
     {
@@ -34,12 +41,8 @@ public class AtaqueGas : MonoBehaviour
             if (player != null)
             {
                 // Aplicar daño al jugador
-                player.playerHealth -= damage;
+                DamageToPlayer(player);
 
-                // Actualizar la barra de vida del jugador si es necesario
-
-
-                Debug.Log($"Daño infligido al jugador: {damage}. Vida restante: {player.playerHealth}");
             }
         }
     }

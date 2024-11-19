@@ -15,7 +15,7 @@ public class AnimationBossTrigger : MonoBehaviour
             var boss = hit.GetComponent<BossController>();
             if (boss != null)
             {
-                boss.DamageToPlayer();
+                //boss.DamageToPlayer();
             }
         }
     }

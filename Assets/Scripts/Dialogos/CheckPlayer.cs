@@ -34,11 +34,14 @@ public class CheckPlayer : MonoBehaviour
         {
             visualCue.SetActive(false);
         }
-        if (DialogueManager.HasConversationFinished())
+        if (inConvo)
         {
-            dialogueUI.SetActive(false);
-            inConvo = false;
-            convoFinished = true;
+            if (DialogueManager.HasConversationFinished())
+            {
+                dialogueUI.SetActive(false);
+                inConvo = false;
+                convoFinished = true;
+            }
         }
     }
 

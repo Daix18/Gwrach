@@ -52,11 +52,12 @@ public class MenuController : MonoBehaviour
         isPaused = true;
         Time.timeScale = 0f;
 
-        _player.enabled = false;
-        //_playerAttack.enabled = false;
+        OpenMainMenu();
+
         _playerInput.enabled = false;
 
-        OpenMainMenu();
+        _player.enabled = false;
+        //_playerAttack.enabled = false;
     }
 
     public void UnPause()
@@ -64,11 +65,12 @@ public class MenuController : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1f;
 
-        _player.enabled = true;
-        //_playerAttack.enabled = true;
+        CloseMenus();
+
         _playerInput.enabled = true;
 
-        CloseMenus();
+        _player.enabled = true;
+        //_playerAttack.enabled = true;
     }
 
     private void OpenMainMenu()

@@ -231,7 +231,7 @@ public class BossController : MonoBehaviour
     {
         if (gasObject != null && shootingControler != null)
         {
-            Vector3 spawnPosition = shootingControler.position + new Vector3(2.5f * Mathf.Sign(transform.localScale.x), -0.2f, 0);
+            Vector3 spawnPosition = shootingControler.position + new Vector3(1.8f * Mathf.Sign(transform.localScale.x), -0.2f, 0);
 
             GameObject gasInstance = Instantiate(gasObject, spawnPosition, Quaternion.identity);
 
@@ -267,10 +267,16 @@ public class BossController : MonoBehaviour
             }
         }
     }
-    public void DamageToPlayer()
+    public void DamageToPlayer(VidaPlayer player)
     {
-        Debug.Log("damage");
-        playerPlayer.playerHealth -= attack2Damage;
+        player.playerHealth -= attack2Damage;
+
+        Debug.Log($"Daño infligido al jugador: {attack2Damage}. Vida restante: {player.playerHealth}");
+
+        if (player.playerHealth <= 0)
+        {
+            GameManager.THIS.OnPlayerDeath();
+        }
     }
     private void attackTrigger()
     {
@@ -282,12 +288,7 @@ public class BossController : MonoBehaviour
             if (player != null)
             {
                 // Aplicar daño al jugador
-                player.playerHealth -= attack2Damage;
-
-                // Actualizar la barra de vida del jugador si es necesario
-                
-
-                Debug.Log($"Daño infligido al jugador: {attack2Damage}. Vida restante: {player.playerHealth}");
+                DamageToPlayer(player);
             }
         }
     }
