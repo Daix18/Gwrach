@@ -14,11 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6466346806470563271, guid: be0be97fcc86282458c7f4e6a6981cc0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.94
+      value: -23.349245
       objectReference: {fileID: 0}
     - target: {fileID: 6466346806470563271, guid: be0be97fcc86282458c7f4e6a6981cc0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.8
+      value: -7.55489
       objectReference: {fileID: 0}
     - target: {fileID: 6466346806470563271, guid: be0be97fcc86282458c7f4e6a6981cc0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -82,4 +82,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
-  attackCheckRadius: 3
+  attackCheckRadius: 0.82

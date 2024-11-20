@@ -72,7 +72,7 @@ public class Player_ST : Entity_ST
             return;
         }
         dashUsageTimer -= Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.W)&& dashUsageTimer<0) 
+        if (Input.GetKeyDown(KeyCode.Comma)&& dashUsageTimer<0) 
         {
             dashUsageTimer = dashCooldown;
             dashDir = Input.GetAxisRaw("Horizontal");
