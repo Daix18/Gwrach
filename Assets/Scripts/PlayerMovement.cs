@@ -48,31 +48,20 @@ public class PlayerMovement : MonoBehaviour
 
     public void InCombat()
     {
-        _moveH = Input.GetAxis("Horizontal") * _playerSpeed;
-        _rb.velocity = new Vector2(_moveH, _rb.velocity.y);
+        //_moveH = Input.GetAxis("Horizontal") * _playerSpeed;
+        //_moveY = Input.GetAxis("Vertical") * _playerSpeed;
+        //_rb.velocity = new Vector2(_moveH, _moveY);
         PlayerAnimation.THIS._anim.SetLayerWeight(0, 0);
         PlayerAnimation.THIS._anim.SetLayerWeight(1, 1);
-
-        if (Input.GetKeyDown(KeyCode.W) && _isGrounded)
-        {
-            _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-            Debug.Log("Saltooo");
-        }
 
         if(Input.GetMouseButtonDown(0))
         {
             AttackController.THIS.Golpe();
         }
-
-        if (_moveH < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-
-        else if (_moveH > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
+        //Vector2 _direction = new Vector2(_moveH, _moveY);
+        //_direction = Vector2.ClampMagnitude(_direction, 1);
+        //Vector2 _movement = _direction * _playerSpeed;
+        //_playerAnimation.SetDirection(_movement);
     }
 
     public void OutOfCombat()
