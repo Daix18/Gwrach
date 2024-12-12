@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Zona01.unity
     guid: 16e935bf850554446b7a808927b52cb1
   - enabled: 1
-    path: Assets/Scenes/ScenaConEstados.unity
-    guid: 737ca670cdeae774f8a5e0f3824338b9
+    path: Assets/Scenes/Proto_Combat.unity
+    guid: 35375b1ac4ad2fe479b8fb75514103cc
   m_configObjects: {}
